@@ -1,0 +1,55 @@
+﻿@model ExamEquityCalculatorApp.Models.EquityCalculator
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Equity Calculator</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SellingPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SellingPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReservationDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EquityTerm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EquityTerm)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <!-- Display calculated results -->
+    <h4>Calculated Results</h4>
+    <hr />
+    @if (TempData["EquityResults"] is List<object> results)
+    {
+        foreach (var result in results)
+        {
+            <div>
+                @foreach (var property in result.GetType().GetProperties())
+                {
+                    <p>@property.Name: @property.GetValue(result)</p>
+                }
+            </div>
+        }
+    }
+</div>
+<div>
+
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

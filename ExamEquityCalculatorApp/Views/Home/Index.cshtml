@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>TECHNICAL EXAM PART 1</h1>
+    <p>Christian Jonel M. Cañanes</p>
+
+    <p>
+        <h5> 1) Create a Select statement to generate the following result  (note: in SellingPrice use Lotprice if type is Lot only else use Houseprice)</h5> <br />
+
+        Query:<br />
+
+        SELECT<br />
+        CustomerTbl.CustomerNo,<br />
+        CustomerTbl.UnitID,<br />
+        CustomerTbl.LastName,<br />
+        CustomerTbl.FirstName,<br />
+        CustomerTbl.MiddleName,<br />
+        CustomerDtl.EquityTerm,<br />
+        CustomerDtl.EquityAmount,<br />
+        CustomerDtl.MATerm,<br />
+        CustomerDtl.MAAmount,<br />
+        CustomerDtl.MIR,<br />
+        CustomerDtl.FIRE,<br />
+        CustomerDtl.LoanAmt,<br />
+        CustomerDtl.IntRate,<br />
+        InventoryTbl.HousePrice + InventoryTbl.LotPrice AS SellingPrice<br />
+        FROM<br />
+        CustomerTbl<br />
+        JOIN<br />
+        CustomerDtl ON CustomerTbl.CustomerNo = CustomerDtl.CustomerNo<br />
+        JOIN<br />
+        InventoryTbl ON CustomerTbl.UnitID = InventoryTbl.UnitID;<br />
+    </p>
+    <p>
+
+        <h5>2)Create an Update Statement to update the IntRate of customerNo 739662 from 10 to 21</h5><br />
+
+        Query:<br />
+
+        UPDATE CustomerDtl<br />
+        SET IntRate = 21<br />
+        WHERE CustomerNo = 739662;<br /><br />
+
+        <h5>
+            3)Create a Delete Statement to Delete customer TRAMPE, MARJORIE RIVERA in both table
+        </h5><br />
+
+        DELETE FROM CustomerTbl<br />
+        WHERE LastName = 'TRAMPE' AND FirstName = 'MARJORIE' AND MiddleName = 'RIVERA';<br />
+
+        DELETE FROM CustomerDtl<br />
+        WHERE CustomerNo IN (SELECT CustomerNo FROM CustomerTbl WHERE LastName = 'TRAMPE' AND FirstName = 'MARJORIE' AND MiddleName = 'RIVERA');
+    </p>
+</div>

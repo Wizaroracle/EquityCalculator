@@ -1,0 +1,45 @@
+﻿@foreach (var result in Model)
+{
+    <div>
+        <h4>Term @result.Term</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Due Date:
+            </dt>
+            <dd class="col-sm-10">
+                @(((DateTime)result.DueDate).AddMonths(1).ToString("MM/dd/yyyy"))
+            </dd>
+            <dt class="col-sm-2">
+                Balance:
+            </dt>
+            <dd class="col-sm-10">
+                @result.Balance
+            </dd>
+            <dt class="col-sm-2">
+                Monthly Amount:
+            </dt>
+            <dd class="col-sm-10">
+                @result.MonthlyAmount
+            </dd>
+            <dt class="col-sm-2">
+                Interest (5% of Balance):
+            </dt>
+            <dd class="col-sm-10">
+                @result.Interest
+            </dd>
+            <dt class="col-sm-2">
+                Insurance (1% of Amount):
+            </dt>
+            <dd class="col-sm-10">
+                @result.Insurance
+            </dd>
+            <dt class="col-sm-2">
+                Total Amount:
+            </dt>
+            <dd class="col-sm-10">
+                @result.TotalAmount
+            </dd>
+        </dl>
+    </div>
+}
