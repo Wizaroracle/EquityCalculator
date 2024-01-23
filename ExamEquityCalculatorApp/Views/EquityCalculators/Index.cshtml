@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExamEquityCalculatorApp.Models.EquityCalculator>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>View All Loans</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquityTerm)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquityTerm)
+            </td>
+            <td>
+                    <a asp-action="ViewSchedule" asp-route-id="@item.Id" class="btn btn-success">View Schedule</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+
+</table>
